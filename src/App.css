@@ -41,11 +41,11 @@ body {
 }
 
 .item {
-  width: 18.25vw;
+  width: 467px;
   -webkit-clip-path: url(#logo);
   clip-path: url(#logo);
 }
 
 .item video {
-  height: 50vh;
+  height: 500px;
 }
