@@ -19,7 +19,7 @@ body {
 }
 
 .App-header {
-  background-color: white;
+  background-color: #171717;
   min-height: 100vh;
   max-height: 100vh;
   position: relative;
@@ -29,23 +29,39 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow-x: hidden;
 }
-
-/* .item--svg-clip-path-with-text-html img {
-  -webkit-clip-path: url(#clipping-with-text);
-  clip-path: url(#clipping-with-text);
-} */
 
 #image {
   width: 50vw;
 }
 
 .item {
-  width: 467px;
-  -webkit-clip-path: url(#logo);
-  clip-path: url(#logo);
+  height: 466px;
+  border: #171717;
+  width: 466px;
+  /* border-radius: 60%; */
+  /* background-color: white; */
 }
 
 .item video {
   height: 500px;
+  -webkit-clip-path: url(#logo);
+  clip-path: url(#logo);
+}
+
+.LogoSection {
+  position: relative;
+  z-index: 1000;
+}
+
+.circle {
+  z-index: -1;
+  position: absolute;
+  background-color: white;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  top: 1px;
+  left: 2px;
 }
