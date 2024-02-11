@@ -10,8 +10,8 @@ body {
   text-decoration: none;
 }
 
-.App {
-  /* text-align: center; */
+.svg-defs {
+  position: absolute;
 }
 
 .App-Logo {
