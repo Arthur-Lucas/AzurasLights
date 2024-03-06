@@ -11,6 +11,15 @@ function App() {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const charactersLength = characters.length;
 
+    const Logo = document.querySelector(".LogoSection");
+    const titleAzura = document.querySelector(".titleAzura");
+
+    // Écoutez l'événement animationend sur le premier élément
+    Logo.addEventListener("animationend", () => {
+      // Activez l'animation du deuxième élément lorsque la première est terminée
+      titleAzura.style.animationPlayState = "running";
+    });
+
     let screenWidth = window.innerWidth;
     let screenHeight = window.innerHeight;
     let divWidth = 30;
@@ -57,7 +66,15 @@ function App() {
             </div>
             <span className="circle"></span>
           </div>
-          <img src={TitleAzura}></img>
+          <div className="titleAzura">
+            <span className="topBarTitle"></span>
+            <img src={TitleAzura}></img>
+            <div className="downTitle">
+              <span className="downBarTitle"></span>
+              <button>Online</button>
+              <span className="downBarTitle"></span>
+            </div>
+          </div>
         </div>
       </header>
     </div>

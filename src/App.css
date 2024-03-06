@@ -51,20 +51,13 @@ body {
   /* transition: all 0.2s; */
   font-family: "JabbaTheFont", sans-serif;
   cursor: default;
+  transition: opacity 1000ms;
 }
 
 .grid-item:hover {
   opacity: 1;
+  transition: none;
 }
-
-/* .App-header > *:not(.header-content):not(.svg-defs):not(.LogoSection) {
-  width: 100%;
-  
-} */
-
-/* .App-header > *:not(.header-content):not(.svg-defs):not(.LogoSection):hover {
-  opacity: 1;
-} */
 
 #image {
   width: 50vw;
@@ -92,12 +85,61 @@ body {
   flex-direction: column;
   top: 50%;
   left: 50%;
+  height: 100%;
+  width: 100%;
   transform: translate(-50%, -50%);
 }
 
 .LogoSection {
+  animation: 1s ease-out 0s 1 slideInFromBottom;
   position: relative;
-  z-index: 1000;
+  z-index: 9999;
+  margin-bottom: 5vh;
+}
+.titleAzura {
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+  animation-play-state: paused;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.titleAzura img {
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.topBarTitle {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+.downTitle {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.downTitle .downBarTitle {
+  width: fit-content;
+  width: -webkit-fill-available;
+  height: 3px;
+  background-color: white;
+}
+
+.downTitle button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "JabbaTheFont";
+  margin: 0 2%;
+  font-size: 0.65vw;
+  padding: 1.5% 6%;
 }
 
 .circle {
@@ -110,3 +152,16 @@ body {
   top: 1px;
   left: 2px;
 }
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*  Section */
