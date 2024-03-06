@@ -10,6 +10,12 @@ body {
   text-decoration: none;
 }
 
+@font-face {
+  font-family: "JabbaTheFont";
+  src: local("Jabba The Font Regular"), local("JabbaTheFont"),
+    url("./fonts/Jabba the Font Regular.ttf") format("truetype");
+}
+
 .svg-defs {
   position: absolute;
 }
@@ -23,20 +29,48 @@ body {
   min-height: 100vh;
   max-height: 100vh;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+  /* Ajustez selon vos besoins */
+  /* gap: 1px; */
+
   font-size: calc(10px + 2vmin);
   color: white;
   overflow-x: hidden;
 }
 
+.grid-item {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+  background-color: transparent;
+  opacity: 0;
+  /* transition: all 0.2s; */
+  font-family: "JabbaTheFont", sans-serif;
+  cursor: default;
+}
+
+.grid-item:hover {
+  opacity: 1;
+}
+
+/* .App-header > *:not(.header-content):not(.svg-defs):not(.LogoSection) {
+  width: 100%;
+  
+} */
+
+/* .App-header > *:not(.header-content):not(.svg-defs):not(.LogoSection):hover {
+  opacity: 1;
+} */
+
 #image {
   width: 50vw;
 }
 
-.item {
+.sourceVideo {
   height: 466px;
   border: #171717;
   width: 466px;
@@ -44,10 +78,21 @@ body {
   /* background-color: white; */
 }
 
-.item video {
+.sourceVideo video {
   height: 500px;
   -webkit-clip-path: url(#logo);
   clip-path: url(#logo);
+}
+
+.header-content {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .LogoSection {

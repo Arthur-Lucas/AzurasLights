@@ -1,9 +1,39 @@
 import "./App.css";
 import video from "./images/bg-azura.mp4";
 import svgLogo from "./images/Logo_Azura_Revert.svg";
-import image from "./images/istockphoto-134116671-612x612.jpg";
+import { gsap } from "gsap";
+import TitleAzura from "./images/TitleAzura.svg";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const appHeader = document.querySelector(".App-header");
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const charactersLength = characters.length;
+
+    let screenWidth = window.innerWidth;
+    let screenHeight = window.innerHeight;
+    let divWidth = 30;
+    let divHeight = 30;
+
+    console.log("size", screenWidth, screenHeight);
+
+    let numDivsWidth = Math.floor(screenWidth / divWidth);
+
+    let numDivsHeight = Math.floor(screenHeight / divHeight);
+    // Calcul du nombre total de divs
+    let numberOfDivs = numDivsWidth * numDivsHeight;
+    numberOfDivs = numberOfDivs / 2;
+    for (let i = 0; i < numberOfDivs; i++) {
+      const gridItem = document.createElement("div");
+      gridItem.classList.add("grid-item");
+      gridItem.innerText = characters.charAt(
+        Math.floor(Math.random() * charactersLength)
+      );
+      appHeader.appendChild(gridItem);
+    }
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,13 +47,17 @@ function App() {
             </clipPath>
           </defs>
         </svg>
-        <div className="LogoSection">
-          <div className="item">
-            <video muted autoPlay loop autoFocus>
-              <source src={video}></source>
-            </video>
+        {/* <div class="item"></div> */}
+        <div className="header-content">
+          <div className="LogoSection">
+            <div className="sourceVideo">
+              <video muted autoPlay loop autoFocus>
+                <source src={video}></source>
+              </video>
+            </div>
+            <span className="circle"></span>
           </div>
-          <span className="circle"></span>
+          <img src={TitleAzura}></img>
         </div>
       </header>
     </div>
