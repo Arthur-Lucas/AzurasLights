@@ -2,10 +2,64 @@ import "./App.css";
 import video from "./images/bg-azura.mp4";
 import svgLogo from "./images/Logo_Azura_Revert.svg";
 import image from "./images/istockphoto-134116671-612x612.jpg";
+import React, { useRef, useState } from "react";
 
 function App() {
+  const parentRef = useRef(null);
+  const childRef = useRef(null);
+  const [childPosition, setChildPosition] = useState({ x: 0, y: 0 });
+  const [bHoverBuger, setbHoverBuger] = useState(false);
+
+  const handleMouseMove = (e) => {
+    if (!parentRef.current || !childRef.current) return;
+
+    const parentRect = parentRef.current.getBoundingClientRect();
+
+    // childRef.current.position = "absolute";
+
+    // Calculer la position relative de la souris par rapport au parent
+    const x = e.clientX - parentRect.left - childRef.current.clientWidth / 2;
+    const y = e.clientY - parentRect.top - childRef.current.clientHeight / 2;
+
+    // Assurer que la position ne dépasse pas les limites du parent
+    const maxX = parentRect.width - childRef.current.clientWidth;
+    const maxY = parentRect.height - childRef.current.clientHeight;
+
+    const clampedX = Math.max(0, Math.min(x, maxX));
+    const clampedY = Math.max(0, Math.min(y, maxY));
+    setChildPosition({ x: clampedX, y: clampedY });
+    setbHoverBuger(true);
+  };
+
+  const handleMouseLeaveBurger = (e) => {
+    setChildPosition({ x: 0, y: 0 });
+    setbHoverBuger(false);
+  };
+
   return (
     <div className="App">
+      <div className="containerBurger">
+        <div
+          className="burger"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeaveBurger}
+          ref={parentRef}
+        >
+          <div
+            className="vector"
+            ref={childRef}
+            style={{
+              transform: `${bHoverBuger ? "" : "translate(-50%, -50%)"}`,
+              top: `${bHoverBuger ? childPosition.y + "px" : "50%"}`,
+              left: `${bHoverBuger ? childPosition.x + "px" : "50%"}`,
+            }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
       <header className="App-header">
         <svg className="svg-defs">
           <defs>
