@@ -8,6 +8,7 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     const appHeader = document.querySelector(".App-header");
+    const appGrid = document.querySelector(".bg-grid");
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const charactersLength = characters.length;
 
@@ -25,8 +26,6 @@ function App() {
     let divWidth = 30;
     let divHeight = 30;
 
-    console.log("size", screenWidth, screenHeight);
-
     let numDivsWidth = Math.floor(screenWidth / divWidth);
 
     let numDivsHeight = Math.floor(screenHeight / divHeight);
@@ -39,13 +38,14 @@ function App() {
       gridItem.innerText = characters.charAt(
         Math.floor(Math.random() * charactersLength)
       );
-      appHeader.appendChild(gridItem);
+      appGrid.appendChild(gridItem);
     }
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
+        <div className="bg-grid"></div>
         <svg className="svg-defs">
           <defs>
             <clipPath id="logo">
@@ -56,7 +56,6 @@ function App() {
             </clipPath>
           </defs>
         </svg>
-        {/* <div class="item"></div> */}
         <div className="header-content">
           <div className="LogoSection">
             <div className="sourceVideo">

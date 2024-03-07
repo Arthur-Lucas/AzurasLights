@@ -29,15 +29,21 @@ body {
   min-height: 100vh;
   max-height: 100vh;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
-  /* Ajustez selon vos besoins */
-  /* gap: 1px; */
-
   font-size: calc(10px + 2vmin);
   color: white;
   overflow-x: hidden;
+}
+
+.bg-grid {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+  background-color: #17171700;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
 }
 
 .grid-item {
@@ -67,8 +73,6 @@ body {
   height: 466px;
   border: #171717;
   width: 466px;
-  /* border-radius: 60%; */
-  /* background-color: white; */
 }
 
 .sourceVideo video {
@@ -78,22 +82,19 @@ body {
 }
 
 .header-content {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  top: 50%;
-  left: 50%;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  transform: translate(-50%, -50%);
 }
 
 .LogoSection {
   animation: 1s ease-out 0s 1 slideInFromBottom;
   position: relative;
-  z-index: 9999;
+  z-index: 1000;
   margin-bottom: 5vh;
 }
 .titleAzura {
@@ -108,6 +109,7 @@ body {
 .titleAzura img {
   width: 100%;
   margin: 2vh 0;
+  z-index: 1;
 }
 
 .topBarTitle {
@@ -140,17 +142,18 @@ body {
   margin: 0 2%;
   font-size: 0.65vw;
   padding: 1.5% 6%;
+  z-index: 1000;
 }
 
 .circle {
   z-index: -1;
   position: absolute;
   background-color: white;
-  width: 460px;
-  height: 460px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
-  top: 1px;
-  left: 2px;
+  top: -7px;
+  left: -7px;
 }
 
 @keyframes slideInFromBottom {
