@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    const appHeader = document.querySelector(".App-header");
     const appGrid = document.querySelector(".bg-grid");
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const charactersLength = characters.length;
@@ -42,6 +41,35 @@ function App() {
     }
   }, []);
 
+  function scrollTo() {
+    document.getElementById("streamSection").scrollIntoView();
+  }
+
+  function changeBackground(event) {
+    // event.target.style.background;
+    const container = event.currentTarget; // Get the container div
+    const containerRect = container.getBoundingClientRect();
+    let xRelativeToContainer = event.clientX - containerRect.left;
+    let yRelativeToContainer = event.clientY - containerRect.top;
+
+    let leftPositionPercent =
+      100 - (xRelativeToContainer / containerRect.width) * 100;
+    let topPositionPercent =
+      100 - (yRelativeToContainer / containerRect.height) * 100;
+
+    // gsap.set([event.target], { opacity: 0 });
+    gsap.to(event.target, {
+      background:
+        "radial-gradient(circle at " +
+        leftPositionPercent +
+        "% " +
+        topPositionPercent +
+        "%" +
+        ",rgba(90, 85, 146, 1) 15%, rgba(144, 167, 222, 1) 35%, rgba(255, 255, 255, 1) 55%)",
+      duration: 5,
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -70,12 +98,17 @@ function App() {
             <img src={TitleAzura}></img>
             <div className="downTitle">
               <span className="downBarTitle"></span>
-              <button>Online</button>
+              <button onClick={scrollTo}>Online</button>
               <span className="downBarTitle"></span>
             </div>
           </div>
         </div>
       </header>
+      <section id="streamSection" className="stream-section">
+        <div className="background-radiant" onMouseMove={changeBackground}>
+          <div className="stream-blur"></div>
+        </div>
+      </section>
     </div>
   );
 }
