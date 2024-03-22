@@ -4,6 +4,11 @@ import svgLogo from "./images/Logo_Azura_Revert.svg";
 import { gsap } from "gsap";
 import TitleAzura from "./images/TitleAzura.svg";
 import { useEffect } from "react";
+import streamBG from "./images/streamBG.svg";
+import Ellipse1 from "./images/Ellipse1.svg";
+import Ellipse2 from "./images/Ellipse2.svg";
+import Ellipse3 from "./images/Ellipse3.svg";
+import Ellipse4 from "./images/Ellipse4.svg";
 
 function App() {
   useEffect(() => {
@@ -58,14 +63,14 @@ function App() {
       100 - (yRelativeToContainer / containerRect.height) * 100;
 
     // gsap.set([event.target], { opacity: 0 });
-    gsap.to(event.target, {
+    gsap.to(event.currentTarget, {
       background:
         "radial-gradient(circle at " +
         leftPositionPercent +
         "% " +
         topPositionPercent +
         "%" +
-        ",rgba(90, 85, 146, 1) 0%, rgba(144, 167, 222, 1) 35%, rgba(255, 255, 255, 1) 55%)",
+        ",rgba(90, 85, 146, 1), rgba(144, 167, 222, 1), rgba(255, 255, 255, 1) 35%)",
       duration: 5,
     });
   }
@@ -106,7 +111,14 @@ function App() {
       </header>
       <section id="streamSection" className="stream-section">
         <div className="background-radiant" onMouseMove={changeBackground}>
-          <div className="stream-blur"></div>
+          <div className="stream-blur">
+            <div className="stream-box">
+              <img className="ellipse-logo-animated Ellipse1" src={Ellipse1} />
+              <img className="ellipse-logo-animated Ellipse2" src={Ellipse2} />
+              <img className="ellipse-logo-animated Ellipse3" src={Ellipse3} />
+              <img className="ellipse-logo-animated Ellipse4" src={Ellipse4} />
+            </div>
+          </div>
         </div>
       </section>
     </div>
